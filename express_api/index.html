@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes</title>
+    <style>
+        th, td, p, input {
+            font:14px Verdana;
+        }
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Pods details</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Node</th>
+            <th>Status</th>
+            <th>Age</th>
+            <th>CPU</th>
+            <th>Memory</th>
+        </tr>
+    </table>
+    <script>
+        require(index.js);
+        pods.forEach(p => {
+            document.write("<tr><td>"+p.metadata.name +"</td><td>"+p.spec.nodeName+"</td><td>"+p.status.phase +"</td><td>"+
+                p.spec.nodeName+"</td><td>"+p.status.startTime+"</td></tr>");
+        });
+    </script>
+    
+</body>
+</html>

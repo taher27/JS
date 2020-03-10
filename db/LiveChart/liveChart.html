@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster Status</title>
+    <style>
+        body{
+            background-color: #282C34;
+        }
+    </style>
+</head>
+<body>
+    <!-- onload = "JavaScript:AutoRefresh(5000);" -->
+    <div class="iframe-container" id="cpu">
+        <iframe src="./liveChart1.html" height="430vh" width="100%" allowfullscreen frameborder="0" scrolling="no"> </iframe>
+    </div>
+
+    <div id="memory">
+        <iframe src='./liveChart2.html' height="430vh" width="100%" allowfullscreen frameborder="0" scrolling="no"> </iframe>
+    </div>
+    
+    <!-- <script type = "text/JavaScript">
+            function AutoRefresh( t ) {
+               setTimeout("location.reload();", t);
+            }
+      </script> -->
+</body>
+</html>

@@ -1,0 +1,191 @@
+{
+  "podmetrics": [
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-0",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group1-0",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:38Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "888913n",
+            "memory": "20300Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-1",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group2-1",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:35Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "899227n",
+            "memory": "15256Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-1",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group1-1",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:43Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "2264444n",
+            "memory": "20540Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-service-0",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-service-0",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:37Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-service",
+          "usage": {
+            "cpu": "6112099n",
+            "memory": "35616Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-2",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group1-2",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:40Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "820142n",
+            "memory": "20272Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-0",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group2-0",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:41Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "2496193n",
+            "memory": "15324Ki"
+          }
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-2",
+        "namespace": "default",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/zbio-broker-group2-2",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:34Z",
+      "window": "30s",
+      "containers": [
+        {
+          "name": "zbio-broker",
+          "usage": {
+            "cpu": "926448n",
+            "memory": "15480Ki"
+          }
+        }
+      ]
+    }
+  ],
+  "nodemetrics": [
+    {
+      "metadata": {
+        "name": "master",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/master",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:44Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "193536430n",
+        "memory": "668176Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "node1",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/node1",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:45Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "52981156n",
+        "memory": "392108Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "node2",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/node2",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:43Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "51475728n",
+        "memory": "373560Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "node3",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/node3",
+        "creationTimestamp": "2020-03-06T09:56:39Z"
+      },
+      "timestamp": "2020-03-06T09:55:43Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "45717829n",
+        "memory": "354724Ki"
+      }
+    }
+  ]
+}
