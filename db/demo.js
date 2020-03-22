@@ -12,9 +12,9 @@ function loadData(){
         parseData(data);
     })
 }
-// , 3000);
+// , 10000);
 
-loadData()
+// loadData()
 function parseData(data) {
     data.podmetrics.forEach(item => {
         pods.insert({
@@ -43,9 +43,8 @@ function parseData(data) {
 }
 function getData(name) { 
     pods.find({"name":name}, function (err, docs) { 
-    /*docs.forEach(element => {console.log(element._id)});*/ 
-    data.insert(docs, function(err, newDoc) { console.log("Data Added")})    
-    return docs;}); 
+        console.log(docs)
+    }); 
 }
    
 getData("zbio-service-0")

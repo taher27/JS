@@ -1,0 +1,1564 @@
+{
+  "pods": [
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-0",
+        "generateName": "zbio-broker-group1-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group1-0",
+        "uid": "a452cf8f-d47b-4312-897c-1f2ce5eab089",
+        "resourceVersion": "745383",
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-broker-group1",
+          "controller-revision-hash": "zbio-broker-group1-67f7948754",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group1-0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group1",
+            "uid": "997a200b-e080-4fae-8d59-715adc9dd772",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group1-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node1",
+        "securityContext": {},
+        "hostname": "zbio-broker-group1-0",
+        "subdomain": "zbio-broker-group1-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          }
+        ],
+        "hostIP": "10.10.0.11",
+        "podIP": "10.244.1.77",
+        "podIPs": [
+          {
+            "ip": "10.244.1.77"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:24Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:44Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:45Z",
+                "finishedAt": "2020-03-15T06:44:21Z",
+                "containerID": "docker://ae0de62f6e66cdeee09f965452357355e363ca5f62bc7aaa3a0c52d94b332221"
+              }
+            },
+            "ready": true,
+            "restartCount": 89,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://a0707982ec085548bc47a29caebeba0eb4a97d48959bfd8829db49533970f3e1",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-1",
+        "generateName": "zbio-broker-group1-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group1-1",
+        "uid": "3d0ff089-916c-4b79-894e-a766217e35c7",
+        "resourceVersion": "745412",
+        "creationTimestamp": "2020-03-03T08:04:26Z",
+        "labels": {
+          "app": "zbio-broker-group1",
+          "controller-revision-hash": "zbio-broker-group1-67f7948754",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group1-1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group1",
+            "uid": "997a200b-e080-4fae-8d59-715adc9dd772",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group1-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node2",
+        "securityContext": {},
+        "hostname": "zbio-broker-group1-1",
+        "subdomain": "zbio-broker-group1-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:26Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:26Z"
+          }
+        ],
+        "hostIP": "10.10.0.12",
+        "podIP": "10.244.2.31",
+        "podIPs": [
+          {
+            "ip": "10.244.2.31"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:26Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:46Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:49Z",
+                "finishedAt": "2020-03-15T06:44:23Z",
+                "containerID": "docker://b197186fa8c3ad2d2b161302f0b299a1a39beede931148bd58aeef1bad9ebc6d"
+              }
+            },
+            "ready": true,
+            "restartCount": 86,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://461812d7482f5f8a3a07e45262c5114ea951c2b5079f5f11686c2c1fd9a1abb0",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group1-2",
+        "generateName": "zbio-broker-group1-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group1-2",
+        "uid": "a798aa8d-85a5-4e2e-8a31-13da399b7ca8",
+        "resourceVersion": "776516",
+        "creationTimestamp": "2020-03-03T08:04:28Z",
+        "labels": {
+          "app": "zbio-broker-group1",
+          "controller-revision-hash": "zbio-broker-group1-67f7948754",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group1-2"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group1",
+            "uid": "997a200b-e080-4fae-8d59-715adc9dd772",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group1-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node3",
+        "securityContext": {},
+        "hostname": "zbio-broker-group1-2",
+        "subdomain": "zbio-broker-group1-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:28Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:28Z"
+          }
+        ],
+        "hostIP": "10.10.0.13",
+        "podIP": "10.244.3.239",
+        "podIPs": [
+          {
+            "ip": "10.244.3.239"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:28Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:44Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:46Z",
+                "finishedAt": "2020-03-15T06:44:22Z",
+                "containerID": "docker://aa6039d1156088be8b756d93e557299d01ae119e10792e87a03f24ef391d08c4"
+              }
+            },
+            "ready": true,
+            "restartCount": 86,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://e719c36c8584684610029aaa5bdf04b560f1a70b572e6fedcf1883953b29244c",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-0",
+        "generateName": "zbio-broker-group2-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group2-0",
+        "uid": "3389e0d8-5c12-4e27-9008-1b8257f1ff01",
+        "resourceVersion": "745414",
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-broker-group2",
+          "controller-revision-hash": "zbio-broker-group2-64c78cf685",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group2-0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group2",
+            "uid": "23ecb12c-d985-40bc-837b-7ee67cb5774b",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group2-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node2",
+        "securityContext": {},
+        "hostname": "zbio-broker-group2-0",
+        "subdomain": "zbio-broker-group2-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          }
+        ],
+        "hostIP": "10.10.0.12",
+        "podIP": "10.244.2.32",
+        "podIPs": [
+          {
+            "ip": "10.244.2.32"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:24Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:46Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:49Z",
+                "finishedAt": "2020-03-15T06:44:23Z",
+                "containerID": "docker://274ea84d5ee470115b0f11aa90d431055c45e43f0cbdfdc5722c2e49fe352679"
+              }
+            },
+            "ready": true,
+            "restartCount": 86,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://32f494c86f5d963ead7e5307c7e40229a721391e3f312c343886e3775c0b38a9",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-1",
+        "generateName": "zbio-broker-group2-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group2-1",
+        "uid": "cc701313-b1a0-4dab-bbb6-5606143f4a98",
+        "resourceVersion": "776518",
+        "creationTimestamp": "2020-03-03T08:04:26Z",
+        "labels": {
+          "app": "zbio-broker-group2",
+          "controller-revision-hash": "zbio-broker-group2-64c78cf685",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group2-1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group2",
+            "uid": "23ecb12c-d985-40bc-837b-7ee67cb5774b",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group2-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node3",
+        "securityContext": {},
+        "hostname": "zbio-broker-group2-1",
+        "subdomain": "zbio-broker-group2-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:26Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:26Z"
+          }
+        ],
+        "hostIP": "10.10.0.13",
+        "podIP": "10.244.3.240",
+        "podIPs": [
+          {
+            "ip": "10.244.3.240"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:26Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:45Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:46Z",
+                "finishedAt": "2020-03-15T06:44:22Z",
+                "containerID": "docker://b027f4a9d8c936f6c9d7b8a8deaa225973a30f1b4d371e62bbc3f8d443d4e93b"
+              }
+            },
+            "ready": true,
+            "restartCount": 86,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://0ddd77123da546fddfc786e8c1b38989230ba19c585e3e9e165effe399740f5f",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2-2",
+        "generateName": "zbio-broker-group2-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-broker-group2-2",
+        "uid": "3b6b30be-b9c6-46ae-876f-3f2df6f4ae2d",
+        "resourceVersion": "745424",
+        "creationTimestamp": "2020-03-03T08:04:28Z",
+        "labels": {
+          "app": "zbio-broker-group2",
+          "controller-revision-hash": "zbio-broker-group2-64c78cf685",
+          "statefulset.kubernetes.io/pod-name": "zbio-broker-group2-2"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-broker-group2",
+            "uid": "23ecb12c-d985-40bc-837b-7ee67cb5774b",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-broker",
+            "image": "zbio/zbbroker:v1",
+            "ports": [
+              {
+                "containerPort": 50003,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "BROKER_POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "status.podIP"
+                  }
+                }
+              },
+              {
+                "name": "ZB_SVC_AP",
+                "value": "zbio-service:50001"
+              },
+              {
+                "name": "BROKER_GROUP_NAME",
+                "value": "zbio-broker-group2-service"
+              }
+            ],
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node1",
+        "securityContext": {},
+        "hostname": "zbio-broker-group2-2",
+        "subdomain": "zbio-broker-group2-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:28Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:47Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:28Z"
+          }
+        ],
+        "hostIP": "10.10.0.11",
+        "podIP": "10.244.1.79",
+        "podIPs": [
+          {
+            "ip": "10.244.1.79"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:28Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-broker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:47Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:46Z",
+                "finishedAt": "2020-03-15T06:44:21Z",
+                "containerID": "docker://bc102d280cdec12406ee084cfa8b6d1e744529c5acb66d6ed98ab97fe4a9d22c"
+              }
+            },
+            "ready": true,
+            "restartCount": 90,
+            "image": "zbio/zbbroker:v1",
+            "imageID": "docker://sha256:46cbf270345d958dc9f828e6a9e67fac2a36604bf1ab8d9906c5488bb175f3ee",
+            "containerID": "docker://1f3e96360312fbdb4512bbfbe2601760d6a6ee0ec736bd447d56698a54fca024",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-service-0",
+        "generateName": "zbio-service-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/zbio-service-0",
+        "uid": "a7c0aec3-a858-4eff-80d1-737c3731b0d7",
+        "resourceVersion": "745384",
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-service",
+          "controller-revision-hash": "zbio-service-7dbc88bdc5",
+          "statefulset.kubernetes.io/pod-name": "zbio-service-0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "zbio-service",
+            "uid": "16a550d1-9637-4238-8654-a2b217c64df4",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-7l6cl",
+            "secret": {
+              "secretName": "default-token-7l6cl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "zbio-service",
+            "image": "zbio/zbsvc:v1",
+            "resources": {},
+            "volumeMounts": [
+              {
+                "name": "default-token-7l6cl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Never"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "node1",
+        "securityContext": {},
+        "hostname": "zbio-service-0",
+        "subdomain": "zbio-service",
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-15T06:44:45Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-03T08:04:24Z"
+          }
+        ],
+        "hostIP": "10.10.0.11",
+        "podIP": "10.244.1.78",
+        "podIPs": [
+          {
+            "ip": "10.244.1.78"
+          }
+        ],
+        "startTime": "2020-03-03T08:04:24Z",
+        "containerStatuses": [
+          {
+            "name": "zbio-service",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-15T06:44:45Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-12T14:53:47Z",
+                "finishedAt": "2020-03-15T06:44:21Z",
+                "containerID": "docker://3a8ba0d6a596fc1efc04411a07937b9f949f17688c436fad2a668db62bf55306"
+              }
+            },
+            "ready": true,
+            "restartCount": 89,
+            "image": "zbio/zbsvc:v1",
+            "imageID": "docker://sha256:d5fb2bc4348b4e49647530545209efb3ecc0b01906eb55c89c7e772df597a888",
+            "containerID": "docker://0a95bffeb58ee2d02355b4558106802034e303dd1361d8b9ee06398ec48ccff5",
+            "started": true
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    }
+  ],
+  "services": [
+    {
+      "metadata": {
+        "name": "kubernetes",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/services/kubernetes",
+        "uid": "4f7c94bf-a9ef-448b-b05a-eead75b31a89",
+        "resourceVersion": "147",
+        "creationTimestamp": "2020-03-02T11:54:44Z",
+        "labels": {
+          "component": "apiserver",
+          "provider": "kubernetes"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "https",
+            "protocol": "TCP",
+            "port": 443,
+            "targetPort": 6443
+          }
+        ],
+        "clusterIP": "10.96.0.1",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-service",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/services/zbio-service",
+        "uid": "d9d4fa1e-d15e-4ca9-817e-b44b2b5c958e",
+        "resourceVersion": "56049",
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"zbio-service\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"name\":\"internal-port\",\"port\":50001,\"targetPort\":50001},{\"name\":\"external-port\",\"port\":50002,\"targetPort\":50002}],\"selector\":{\"app\":\"zbio-service\"}}}\n"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "internal-port",
+            "protocol": "TCP",
+            "port": 50001,
+            "targetPort": 50001
+          },
+          {
+            "name": "external-port",
+            "protocol": "TCP",
+            "port": 50002,
+            "targetPort": 50002
+          }
+        ],
+        "selector": {
+          "app": "zbio-service"
+        },
+        "clusterIP": "10.100.35.149",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    }
+  ],
+  "endpoints": [
+    {
+      "metadata": {
+        "name": "kubernetes",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/endpoints/kubernetes",
+        "uid": "ee92fc31-38d1-4f93-894b-dd8987ae54b7",
+        "resourceVersion": "149",
+        "creationTimestamp": "2020-03-02T11:54:44Z"
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.10.0.10"
+            }
+          ],
+          "ports": [
+            {
+              "name": "https",
+              "port": 6443,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "zbio-service",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/endpoints/zbio-service",
+        "uid": "1250767b-ba73-4c28-a54b-dc8aa055a573",
+        "resourceVersion": "745530",
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2020-03-03T08:04:24Z"
+        }
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.1.78",
+              "hostname": "zbio-service-0",
+              "nodeName": "node1",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "zbio-service-0",
+                "uid": "a7c0aec3-a858-4eff-80d1-737c3731b0d7",
+                "resourceVersion": "745384"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "internal-port",
+              "port": 50001,
+              "protocol": "TCP"
+            },
+            {
+              "name": "external-port",
+              "port": 50002,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "persistentvolumes": [],
+  "persistentvolumeclaims": [],
+  "deployments": [],
+  "daemonsets": [],
+  "replicasets": [],
+  "statefulsets": [
+    {
+      "metadata": {
+        "name": "zbio-broker-group1",
+        "namespace": "default",
+        "selfLink": "/apis/apps/v1/namespaces/default/statefulsets/zbio-broker-group1",
+        "uid": "997a200b-e080-4fae-8d59-715adc9dd772",
+        "resourceVersion": "776517",
+        "generation": 1,
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-broker-group1"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"creationTimestamp\":null,\"labels\":{\"app\":\"zbio-broker-group1\"},\"name\":\"zbio-broker-group1\",\"namespace\":\"default\"},\"spec\":{\"replicas\":3,\"selector\":{\"matchLabels\":{\"app\":\"zbio-broker-group1\"}},\"serviceName\":\"zbio-broker-group1-service\",\"template\":{\"metadata\":{\"labels\":{\"app\":\"zbio-broker-group1\"},\"name\":\"zbio-broker-group1\"},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"BROKER_POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.podIP\"}}},{\"name\":\"ZB_SVC_AP\",\"value\":\"zbio-service:50001\"},{\"name\":\"BROKER_GROUP_NAME\",\"value\":\"zbio-broker-group1-service\"}],\"image\":\"zbio/zbbroker:v1\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"zbio-broker\",\"ports\":[{\"containerPort\":50003}]}],\"restartPolicy\":\"Always\"}}}}\n"
+        }
+      },
+      "spec": {
+        "replicas": 3,
+        "selector": {
+          "matchLabels": {
+            "app": "zbio-broker-group1"
+          }
+        },
+        "template": {
+          "metadata": {
+            "name": "zbio-broker-group1",
+            "creationTimestamp": null,
+            "labels": {
+              "app": "zbio-broker-group1"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "zbio-broker",
+                "image": "zbio/zbbroker:v1",
+                "ports": [
+                  {
+                    "containerPort": 50003,
+                    "protocol": "TCP"
+                  }
+                ],
+                "env": [
+                  {
+                    "name": "BROKER_POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "status.podIP"
+                      }
+                    }
+                  },
+                  {
+                    "name": "ZB_SVC_AP",
+                    "value": "zbio-service:50001"
+                  },
+                  {
+                    "name": "BROKER_GROUP_NAME",
+                    "value": "zbio-broker-group1-service"
+                  }
+                ],
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "imagePullPolicy": "IfNotPresent"
+              }
+            ],
+            "restartPolicy": "Always",
+            "terminationGracePeriodSeconds": 30,
+            "dnsPolicy": "ClusterFirst",
+            "securityContext": {},
+            "schedulerName": "default-scheduler"
+          }
+        },
+        "serviceName": "zbio-broker-group1-service",
+        "podManagementPolicy": "OrderedReady",
+        "updateStrategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "partition": 0
+          }
+        },
+        "revisionHistoryLimit": 10
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 3,
+        "readyReplicas": 3,
+        "currentReplicas": 3,
+        "updatedReplicas": 3,
+        "currentRevision": "zbio-broker-group1-67f7948754",
+        "updateRevision": "zbio-broker-group1-67f7948754",
+        "collisionCount": 0
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-broker-group2",
+        "namespace": "default",
+        "selfLink": "/apis/apps/v1/namespaces/default/statefulsets/zbio-broker-group2",
+        "uid": "23ecb12c-d985-40bc-837b-7ee67cb5774b",
+        "resourceVersion": "776519",
+        "generation": 1,
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-broker-group2"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"creationTimestamp\":null,\"labels\":{\"app\":\"zbio-broker-group2\"},\"name\":\"zbio-broker-group2\",\"namespace\":\"default\"},\"spec\":{\"replicas\":3,\"selector\":{\"matchLabels\":{\"app\":\"zbio-broker-group2\"}},\"serviceName\":\"zbio-broker-group2-service\",\"template\":{\"metadata\":{\"labels\":{\"app\":\"zbio-broker-group2\"},\"name\":\"zbio-broker-group2\"},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"BROKER_POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.podIP\"}}},{\"name\":\"ZB_SVC_AP\",\"value\":\"zbio-service:50001\"},{\"name\":\"BROKER_GROUP_NAME\",\"value\":\"zbio-broker-group2-service\"}],\"image\":\"zbio/zbbroker:v1\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"zbio-broker\",\"ports\":[{\"containerPort\":50003}]}],\"restartPolicy\":\"Always\"}}}}\n"
+        }
+      },
+      "spec": {
+        "replicas": 3,
+        "selector": {
+          "matchLabels": {
+            "app": "zbio-broker-group2"
+          }
+        },
+        "template": {
+          "metadata": {
+            "name": "zbio-broker-group2",
+            "creationTimestamp": null,
+            "labels": {
+              "app": "zbio-broker-group2"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "zbio-broker",
+                "image": "zbio/zbbroker:v1",
+                "ports": [
+                  {
+                    "containerPort": 50003,
+                    "protocol": "TCP"
+                  }
+                ],
+                "env": [
+                  {
+                    "name": "BROKER_POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "status.podIP"
+                      }
+                    }
+                  },
+                  {
+                    "name": "ZB_SVC_AP",
+                    "value": "zbio-service:50001"
+                  },
+                  {
+                    "name": "BROKER_GROUP_NAME",
+                    "value": "zbio-broker-group2-service"
+                  }
+                ],
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "imagePullPolicy": "IfNotPresent"
+              }
+            ],
+            "restartPolicy": "Always",
+            "terminationGracePeriodSeconds": 30,
+            "dnsPolicy": "ClusterFirst",
+            "securityContext": {},
+            "schedulerName": "default-scheduler"
+          }
+        },
+        "serviceName": "zbio-broker-group2-service",
+        "podManagementPolicy": "OrderedReady",
+        "updateStrategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "partition": 0
+          }
+        },
+        "revisionHistoryLimit": 10
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 3,
+        "readyReplicas": 3,
+        "currentReplicas": 3,
+        "updatedReplicas": 3,
+        "currentRevision": "zbio-broker-group2-64c78cf685",
+        "updateRevision": "zbio-broker-group2-64c78cf685",
+        "collisionCount": 0
+      }
+    },
+    {
+      "metadata": {
+        "name": "zbio-service",
+        "namespace": "default",
+        "selfLink": "/apis/apps/v1/namespaces/default/statefulsets/zbio-service",
+        "uid": "16a550d1-9637-4238-8654-a2b217c64df4",
+        "resourceVersion": "578367",
+        "generation": 1,
+        "creationTimestamp": "2020-03-03T08:04:24Z",
+        "labels": {
+          "app": "zbio-service"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"creationTimestamp\":null,\"labels\":{\"app\":\"zbio-service\"},\"name\":\"zbio-service\",\"namespace\":\"default\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"zbio-service\"}},\"serviceName\":\"zbio-service\",\"template\":{\"metadata\":{\"labels\":{\"app\":\"zbio-service\"},\"name\":\"zbio-service\"},\"spec\":{\"containers\":[{\"image\":\"zbio/zbsvc:v1\",\"imagePullPolicy\":\"Never\",\"name\":\"zbio-service\"}],\"restartPolicy\":\"Always\"}}}}\n"
+        }
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "app": "zbio-service"
+          }
+        },
+        "template": {
+          "metadata": {
+            "name": "zbio-service",
+            "creationTimestamp": null,
+            "labels": {
+              "app": "zbio-service"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "zbio-service",
+                "image": "zbio/zbsvc:v1",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "imagePullPolicy": "Never"
+              }
+            ],
+            "restartPolicy": "Always",
+            "terminationGracePeriodSeconds": 30,
+            "dnsPolicy": "ClusterFirst",
+            "securityContext": {},
+            "schedulerName": "default-scheduler"
+          }
+        },
+        "serviceName": "zbio-service",
+        "podManagementPolicy": "OrderedReady",
+        "updateStrategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "partition": 0
+          }
+        },
+        "revisionHistoryLimit": 10
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 1,
+        "readyReplicas": 1,
+        "currentReplicas": 1,
+        "updatedReplicas": 1,
+        "currentRevision": "zbio-service-7dbc88bdc5",
+        "updateRevision": "zbio-service-7dbc88bdc5",
+        "collisionCount": 0
+      }
+    }
+  ],
+  "ingresses": []
+}

@@ -133,7 +133,7 @@ console.log(groups)
             // Add new values
             // group.data.push(group.value) // Real values arrive at irregular intervals
              var dm 
-                fetch('http://localhost:60000/api/metrics/default')
+                fetch('http://localhost:60000/api/metrics/default?type=all&labelSelector=&fieldSelector=')
                     .then(res => res.json())
                     .then(data => {
                         data.podmetrics.forEach(item => {

@@ -1,0 +1,26 @@
+.page{
+    display: flex;
+    flex-direction: column;
+}
+
+.statistics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+}
+.configuration, .utilization, .cpu, .memory{
+    flex-grow: 1;
+}
+
+.utilization_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+#specs{
+    list-style: none;
+}
+hr{
+    color: black;
+}

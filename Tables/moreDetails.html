@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="./font-awesome.min.css"> -->
+	<link rel="stylesheet" href="./bootstrap413.min.css">
+	<link rel="stylesheet" href="./dataTables.bootstrap4.min.css">
+	<!-- Bootstrap core JavaScript-->
+	<script src="./jquery331.min.js"></script>
+	<!-- Page level plugin JavaScript-->
+	<script src="./jquery.dataTables.min.js"></script>
+	<script src="./dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="./tablestyle.css">
+    <link rel="stylesheet" href="./detailstyle.css">
+    <script src="./detailScript.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pods</title>
+</head>
+<body onload="call()">
+
+	<span onClick="window.location.reload();">
+		<i class="fa fa-refresh fa-2x fa-fw" style="color: red;"></i>
+	</span>
+
+    <div class="page">
+        <div class="heading">
+            <h6>Statefulsets</h6>
+            <span style="color: white;"><h5 id="stateHeading"></h5></span>
+        </div>
+        <hr>
+        <div class="statistics">
+            <div class="configuration">
+                <h5>Configurations</h5>
+                <ul id=specs>
+                </ul>
+            </div>
+
+            <div class="utilization">
+                <h5>Utilization</h5>
+                <div class="utilization_content">
+                    <div class="cpu">
+                        <h5>CPU</h5>
+                        <p>Usage: 43</p>
+                        <p>Required: Not Set</p>
+                        <p>Limit: Not Set</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h5>Memory</h5>
+                        <p>Usage 35</p>
+                        <p>Required: Not Set</p>
+                        <p>Limit: Not Set</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="Table2">
+            <h5>Pods</h5>
+            <table class="table table-dark table-hover" id="myTable2" width="100%" cellspacing="0">
+                <thead><tr><th scope="col">#</th><th scope="col">Name</th><th scope="col">Phase</th><th scope="col">Container</th><th scope="col">CPU</th><th scope="col">Memory</th><th scope="col">Status</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="services">
+            <h5>Services</h5>
+            <p>No Services</p>
+        </div>
+        <div class="configmaps">
+            <h5>Config Maps</h5>
+            <p>No Config Maps</p>
+
+        </div>
+    </div>
+
+</body>
+</html>

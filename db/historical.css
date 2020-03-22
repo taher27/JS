@@ -1,0 +1,31 @@
+.valueline {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+.memoryline {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+.axis, .domain, line{
+  stroke: #9DA5B4;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#podSelect, #timeSelect{
+    background-color: #282C34;
+    color: #9da5b4;
+    border: none;
+}
+.select{
+    display: flex;
+    flex-direction: column-reverse;
+}
+label{
+  color: #9da5b4;
+  text-decoration: underline;
+}

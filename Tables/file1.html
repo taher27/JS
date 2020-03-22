@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testing</title>
+    <script>
+function one(){
+    var tog1 = document.getElementById("toggle1");
+        var x1 = document.getElementById('iframe1');
+        var table1 = document.getElementById("table1");
+        
+        if(tog1.checked){
+          x1.style.display = "block";
+          table1.style.display = "none";
+        }
+        else{
+          x1.style.display = "none";
+          table1.style.display = "block";
+        }
+}
+    </script>
+</head>
+<body>
+    <label class="switch">
+    <input id="toggle1" 
+     onclick=one() type="checkbox" />
+    <span class="slider round"></span>
+  </label>
+  <div id="table1" style="display:block">
+    <iframe src='./podTable.html' style="overflow:hidden;height:100vh;width:100%" height="400vh" width="100%" allowfullscreen frameborder="0" scrolling="no"></iframe> </iframe>
+  </div>
+  <div class="iframe-container" id="iframe1" style="display:none">
+    <iframe src="./moreDetails.html" style="overflow:hidden;height:100vh;width:100%" height="400vh" width="100%" allowfullscreen frameborder="0" scrolling="no"> </iframe>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+.pagecontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    background-color: #282C34;
+    color: #9da5b4;
+}
+
+tr:nth-child(even) {
+    background-color: #404041;
+    color: #9da5b4;
+}
+
+tr:nth-child(odd) {
+    background-color: #000;
+    color: #9da5b4;
+}
+
+.form-group, #namespaces {
+    margin-left: 3%;
+    background-color: #282C34;
+    color: #9da5b4;
+    border: none;
+}
+
+/*  more Detail CSS */
+
+.page{
+    display: flex;
+    flex-direction: column;
+}
+
+.statistics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+}
+.configuration, .utilization, .cpu, .memory{
+    flex-grow: 1;
+}
+
+.utilization_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+#specs{
+    list-style: none;
+}
+hr{
+    color: black;
+}
+
+/* Common */
+#detailDiv {
+    display: none;
+}
+
+button{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: black;
+    color: #9da5b4;
+    border: 0.5px solid #9da5b4;
+}
+
+select {
+    cursor: pointer;
+}
