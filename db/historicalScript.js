@@ -23,7 +23,6 @@ var svg = d3.select("body").select("div").append("svg")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-
 var pods = "zbio-broker-group1-1";
 var data = [];
 var time = "1584727545";
@@ -118,6 +117,7 @@ function subMinutes(date, minutes) {
 $("#podSelect").change(function(){
   d3.selectAll("svg").remove();
   pods = this.value;
+  document.getElementById("podHeading").innerHTML = pods
   drawChart(pods, time);
 });
 $("#timeSelect").change(function(){

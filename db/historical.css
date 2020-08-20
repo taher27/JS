@@ -13,7 +13,7 @@
 }
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
 }
 #podSelect, #timeSelect{
@@ -23,9 +23,13 @@
 }
 .select{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
+    justify-content: space-around;
 }
 label{
   color: #9da5b4;
   text-decoration: underline;
+}
+#podHeading {
+  color: #9da5b4;
 }

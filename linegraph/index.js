@@ -1,5 +1,5 @@
 //API to fetch historical data of Bitcoin Price Index
-const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
+const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2018-12-01&end=2018-12-31';
 // http://localhost:8001/apis/
 // const api = "http://localhost:8001/apis/";
 /**
@@ -40,7 +40,7 @@ var margin = { top: 20, right: 20, bottom: 30, left: 50 };
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-var svg = d3.select('svg')
+var svg = d3.select('body').select('#Chart').append('svg')
     .attr("width", svgWidth)
     .attr("height", svgHeight);
     
@@ -87,4 +87,3 @@ g.append("path")
     .attr("stroke-width", 1.5)
     .attr("d", line);
 }
-

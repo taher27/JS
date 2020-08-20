@@ -1,0 +1,149 @@
+body {
+    background-color: #212337 !important;
+    color: #9da5b4 !important;
+}
+
+tr:nth-child(even) {
+    background-color: #404041;
+    color: #9da5b4;
+}
+
+tr:nth-child(odd) {
+    background-color: #000;
+    color: #9da5b4;
+}
+.pageContainer {
+    display: flex;
+    flex-direction: row;
+}
+.form-group, #namespaces {
+    margin-left: 3%;
+    background-color: #212337;
+    color: #9da5b4;
+    border: none;
+}
+/*  more Detail CSS */
+
+.page{
+    display: flex;
+    flex-direction: column;
+}
+
+.statistics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+}
+.configuration, .utilization, .cpu, .memory{
+    flex-grow: 1;
+}
+
+.utilization_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+#specs{
+    list-style: none;
+}
+hr{
+    color: black;
+}
+
+/* Common */
+#detailDiv {
+    display: none;
+}
+
+button{
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: black;
+    color: #9da5b4;
+    border: 0.5px solid #9da5b4;
+}
+select {
+    cursor: pointer;
+}
+#myProgress {
+    width: 90%;
+    height: 10px;
+    background-color: #ddd;
+  }
+  
+  #cpuBar {
+    width: 1%;
+    height: 10px;
+    background-color: #4CAF50;
+  }
+
+  #memoryBar {
+    width: 1%;
+    height: 10px;
+    background-color: #4CAF50;
+  }
+  /* Style the tab */
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #9da5b4;
+    background-color: #212337;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover{
+    background-color: #9da5b4;
+    color: #212337;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #9da5b4;
+    color: #212337;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    height: 100%;
+    border-top: none;
+  }
+  .icons{ margin-top: 6px; cursor: pointer; color: #9da5b4;}
+
+  #overview{ display: block;  }
+
+  pre{
+    color: #9da5b4 !important;
+    height: 1000px;
+    max-height: 1000px;
+    overflow: auto;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    white-space: pre !important;
+  }
+  #eventTable {
+    height: 700px;
+    max-height: 700px;
+    overflow: auto;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    white-space: pre !important;
+  }

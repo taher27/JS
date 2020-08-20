@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'fonts-zbio';
+  src:  url('../fonts/fonts-zbio.eot?3lbo37');
+  src:  url('../fonts/fonts-zbio.eot?3lbo37#iefix') format('embedded-opentype'),
+    url('../fonts/fonts-zbio.ttf') format('truetype'),
+    url('../fonts/fonts-zbio.woff') format('woff'),
+    url('../fonts/fonts-zbio.svg?3lbo37#fonts-zbio') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fonts-zbio' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-stop:before {
+  content: "\e900";
+}
+.icon-dependency:before {
+  content: "\e101";
+}
+.icon-observe:before {
+  content: "\e902";
+}
+.icon-play:before {
+  content: "\e903";
+}
+.icon-pods:before {
+  content: "\e904";
+}
+.icon-roost:before {
+  content: "\e905";
+}
+.icon-status:before {
+  content: "\e906";
+}
+.icon-roost-gradient .path1:before {
+  content: "\e901";
+  color: rgb(157, 165, 180);
+}
+.icon-roost-gradient .path2:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: rgb(157, 165, 180);
+}
+.icon-roost-gradient .path3:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(157, 165, 180);
+}
+.icon-roost-gradient .path4:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.2;
+}

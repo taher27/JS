@@ -1,0 +1,45 @@
+.imageDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #afb3b6;
+    padding: 1rem;
+}
+
+.imgDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.containerIcon {
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 20px
+}
+.icons {
+    color: #2396ed;
+}
+.dockerFunctions {
+    margin-top: 15px;
+}
+button {
+    font-size: 20px;
+    border: 1px solid #2396ed;
+    margin-left: 5px;
+    padding: 8px 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: transparent;
+}
+.containerDetails {
+    color: #afb3b6;    
+}
+#containerData {
+    height: 500px;
+    border: 1px solid black;
+    overflow-y: auto;
+
+}
+/* ul{
+    list-style: none;
+} */

@@ -1,7 +1,6 @@
 xmlhttp = new XMLHttpRequest();
 var arr;
 var ns = "default";
-// import podview from './pod-view.js';
 
 function loadNew(ns, state){
     console.log(ns+", "+state);
@@ -20,7 +19,6 @@ const groupBy = key => array =>
 
 function loadPods(ns){
     if(document.getElementById('podDiv').style.display=="none"){
-        console.log("inside if")
         document.getElementById('detailDiv').style.display="none";
         document.getElementById('podDiv').style.display="block";
     }
@@ -150,11 +148,11 @@ function services() {
 
 }
 
-setInterval(() => {
-    console.log(ns)
-    loadPods(ns)
-    loadServices(ns)
-}, 10000)
+// setInterval(() => {
+//     console.log(ns)
+//     loadPods(ns)
+//     loadServices(ns)
+// }, 10000)
 
 // Details Script starts here......
 
@@ -169,52 +167,110 @@ function getAllPods(namespace, state) {
         var myArr = JSON.parse(this.responseText);
         statefulsets = myArr.statefulsets;
         pods = myArr.pods;
-        var tbody = document.getElementsByTagName("tbody")[0];
         var t = $('#myTable2').DataTable();
         console.log(pods)
         console.log(statefulsets);
-
+        podname = "";
         t.clear().draw()
         for (var i = 0; i < pods.length; i++) {
+            podname += pods[i].metadata.name +",";
+            podstatus = "";
+            if( pods[i].status.phase == "Running") {
+                podstatus = '<i class="fa fa-check" aria-hidden="true" style="color:green"></i> ' + pods[i].status.phase;
+            }
+            else {
+                podstatus = pods[i].status.phase;
+            }
                 t.row.add([
                     (i+1),
                     pods[i].metadata.name,
                     pods[i].status.phase,
                     pods[i].spec.containers.length,
-                    "15",
-                    "12",
-                    pods[i].status.phase,
+                    podstatus,
                     
                 ]).draw(false);
         }
 
-    var data = "<li>Kind: <span style='color:white'>"+pods[0].metadata.ownerReferences[0].kind+"</span></li><li>Namespace: <span style='color:white'>"+pods[0].metadata.namespace+"</span></li><li>Created: <span style='color:white'>"+pods[0].metadata.creationTimestamp+"</span></li><li>Labels: <span style='color:white'>app:"+pods[0].metadata.labels.app+"</span></li><li>Images: <span style='color:white'>"+pods[0].spec.containers[0].image+"</span></li>"
-    document.getElementById("specs").innerHTML = data; 
-    document.getElementById("stateHeading").innerHTML=statefulsets[0].metadata.name;
+        cpu = getCpuMemorydata(ns, podname)
+        cpuUsage=0, memUsage=0;
+        cpu.forEach(item => {
+            if(item.tags.__name__ == "zbio_podcpu"){
+                cpuUsage += item.metrics[0].value;
+            }
+            if(item.tags.__name__ == "zbio_podmem"){
+                memUsage += item.metrics[0].value;
+            }
+        });
+        console.log(cpuUsage+", "+memUsage);
+        var data = '<p>Usage: <span style="color: white;">'+ Math.round(cpuUsage/1000000) +'</span></p><p>Required: <span style="color: white;"> Not Set </span></p><p>Limit: <span style="color: white;"> Not Set </span></p>'
+        document.getElementById("cpuUsageData").innerHTML = data;
+
+        var data = '<p>Usage: <span style="color: white;">'+ Math.round(memUsage/1000000) +'</span></p><p>Required: <span style="color: white;"> Not Set </span></p><p>Limit: <span style="color: white;"> Not Set </span></p>'
+        document.getElementById("memoryUsageData").innerHTML = data; 
+
+        document.getElementById("cpuBar").style.width = (Math.round(cpuUsage/1000000) - 10) + "%";
+        document.getElementById("memoryBar").style.width = (Math.round(memUsage/1000000) - 10) + "%";
+
+        data = "<li>Kind: <span style='color:white'>"+pods[0].metadata.ownerReferences[0].kind+"</span></li><li>Namespace: <span style='color:white'>"+pods[0].metadata.namespace+"</span></li><li>Created: <span style='color:white'>"+pods[0].metadata.creationTimestamp+"</span></li><li>Labels: <span style='color:white'>app:"+pods[0].metadata.labels.app+"</span></li><li>Images: <span style='color:white'>"+pods[0].spec.containers[0].image+"</span></li>"
+        document.getElementById("specs").innerHTML = data;
+
+        statefulset = statefulsets[0].metadata.name;
+        document.getElementById("stateHeading").innerHTML= statefulset;
+
+        yaml = getYamlData(ns, statefulset)
+        console.log(yaml);
+        yaml = JSON.stringify(yaml);
+        document.getElementById("yamlData").innerHTML= yaml;
+
     }
   };
-              
-//   var params = getParams(window.location.href);
-//   console.log(params)
 
   xmlhttp.open("GET", 'http://localhost:60000/api/scrape/'+namespace+'?type=statefulsets,pods&labelSelector=app='+state+'&fieldSelector=', true);
   xmlhttp.send();	
 }
 
-function getCpuMemorydata() {
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-          var myArr = JSON.parse(this.responseText);
-          console.log(myArr);
+function subMinutes(date, minutes) {
+    return date.getTime() - minutes*60000;
+}
 
-      }
-  };
-                  
-  var params = getParams(window.location.href);
-  console.log(params)
-  xmlhttp.open("GET", 'http://localhost:60000/api/metrics/'+params.namespace+'?type=pods&labelSelector=app='+params.state+'&fieldSelector=', true);
-  xmlhttp.send();	
+function getCpuMemorydata(ns, podname) {
+    t = (new Date().getTime()).toString().slice(0, -3);
+    console.log(t);
+    time = subMinutes(new Date(), 15);
+    time = time.toString().slice(0, -3);
+    console.log(time)
+    podData = $.ajax({
+        type: 'GET',
+        url: 'http://localhost:60000/api/podmetrics/'+ns+'?pod='+podname+'&collection=podcpu&start='+time+'&end='+t,
+        async: false,
+        dataType: 'json',
+        data: { action : 'getPodsList' },
+        done: function(results) {},
+        fail: function( jqXHR, textStatus, errorThrown ) {
+            console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+        }
+       }).responseJSON;
+       
+       console.log(podData)
+       return podData;
+}
+
+function getYamlData(ns, state){
+    yaml = $.ajax({
+        type: 'GET',
+        url: 'http://localhost:60000/api/spec/'+ns+'?type=statefullset&labelSelector='+state,
+        async: false,
+        dataType: 'json',
+        data: { action : 'getPodsList' },
+        done: function(results) {},
+        fail: function( jqXHR, textStatus, errorThrown ) {
+            console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+        }
+       }).responseJSON;
+       
+       console.log(yaml)
+       return yaml;
+
 }
 
 function call(){
@@ -222,17 +278,31 @@ function call(){
   getCpuMemorydata();
 }
 
-function getParams(url) {
-var params = {};
-var parser = document.createElement('a');
-parser.href = url;
-var query = parser.search.substring(1);
-var vars = query.split('&');
-for (var i = 0; i < vars.length; i++) {
-  var pair = vars[i].split('=');
-  params[pair[0]] = decodeURIComponent(pair[1]);
-}
-return params;
-};
+// function getParams(url) {
+// var params = {};
+// var parser = document.createElement('a');
+// parser.href = url;
+// var query = parser.search.substring(1);
+// var vars = query.split('&');
+// for (var i = 0; i < vars.length; i++) {
+//   var pair = vars[i].split('=');
+//   params[pair[0]] = decodeURIComponent(pair[1]);
+// }
+// return params;
+// };
 
 $('div').after('<hr>')
+
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }

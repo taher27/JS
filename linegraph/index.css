@@ -2,3 +2,12 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+path {
+    stroke: blue;
+    stroke-width: 2px;
+    fill: none;
+}
+.area {
+    fill: rgba(0, 0, 255, 0.2);
+}

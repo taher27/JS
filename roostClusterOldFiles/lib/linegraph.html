@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>linechart</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- fontawesone -->
+<link rel="stylesheet" href="css/all.css" >
+
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/zbio-fonts.css" rel="stylesheet">
+<link href="css/historical.css" rel="stylesheet">
+
+</head>
+
+<body class="fixed-navpadding">
+	<nav class="navbar navbar-expand fixed-top navbar-dark bg-topnav">
+      <!--<a class="navbar-brand" href="#"><img src="images/zbio-logo-small.png" alt="ZBIO"/>ZBIO</a>-->
+		<!-- <div class="slide-controls">
+			<a class="btn btn-link carousel-control-prev" href="#demo" role="button" data-slide="prev">
+				<span class="fas fa-arrow-left"></span>
+			</a>
+			<a class="btn btn-link carousel-control-next mr-2" href="#demo" role="button" data-slide="next">
+				<span class="fas fa-arrow-right"></span>
+			</a>
+		</div> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+		<div class="navbar-nav mr-auto sidebar">
+			<div class="sidebar-sticky">
+				<form class="form-inline theme-dark">
+				  
+				  <div class="form-group pr-4">
+					<label for="" class="text-muted font-weight-bold pr-2">Resources</label>
+					<select id="select-resources" class="custom-select">
+						<option value="pods">Pods</option>
+					  <option value="nodes">Nodes</option>
+					</select>
+				  </div>
+				  <div class="form-group pr-4 namespaceDropdown">
+					<label for="" class="text-muted font-weight-bold pr-2">Namespaces</label>
+					<select id="select-box" class="custom-select">
+					</select>
+				  </div>
+				  <!-- Select Pods  -->
+				  <!-- <div class="form-group pr-4 historicalSelects">
+					<label for="" class="text-muted font-weight-bold pr-2">Pods</label>
+					<select class="custom-select" id="podSelect"></select>
+				  </div> -->
+
+				   <!-- Select Time  -->
+				   <!-- <div class="form-group pr-4 historicalSelects">
+					<label for="" class="text-muted font-weight-bold pr-2">Time</label>
+					<select class="custom-select" id="timeSelect">
+						<option value="15">Last 15 min</option>
+						<option value="30">Last 30 min</option>
+						<option value="60">Last 60 min</option>
+					  </select>
+				  </div> -->
+
+				  <div class="form-group pr-4">
+					<a class="btn btn-sm btn-outline-secondary" title="Refresh" onclick="refreshScreen()"><i class="fas fa-sync-alt"></i></a>
+				 </div>
+
+				 <div class="form-group pr-4">
+					<a class="btn btn-sm btn-outline-secondary" title="Toggle" onclick="toggle()"><i id='chartbutton' style="font-size: 17px;" class="fas fa-chart-line"></i></a>
+				 </div>
+				</form>
+			</div>
+		</div>
+      </div>
+    </nav>
+	
+	<div class="main-screen">
+		<div class="container-fluid pt-2">
+			<div class="right-pane">
+				<div class="row mb-3">
+					<div class="col-12">
+						<div class="loader-overlay">
+							<div class="loader">
+								<img src="images/spiner.svg" alt="Loading">
+							</div>
+						</div>
+						<!-- <div class="custom-control custom-switch">
+						  <input type="checkbox" class="custom-control-input" id="filtered" onclick="toggle()">
+						  <label class="custom-control-label" for="filtered"></label>
+						</div> -->
+					</div>
+				</div>
+				<div class="row" id="live" style="display: flex;">					
+					<div class="col-lg-12">
+						<div class="bdr p-3 mb-3">
+							<div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+							  <div>
+								  <h5 class="text-muted"> CPU Usage(M)</h5>
+							  </div>
+						  	</div>
+							<div>
+								<div id="loadingCpu" style="display: block;">
+									<p> Fetching data for CPU.... </p>
+								</div>
+								<div id="noDataCpuMsg" style="display: none;">
+									<p> No data for this namespace. </p>
+								</div>
+								<div id="cpu" style="display: none;">
+									<div class="partition">
+										<div class="graph col-sm-6"></div>
+										<div class="data col-sm-6" id="cpuHeading"></div>
+									</div>
+								</div>
+								<!-- <img class="img-fluid" src="images/cpu-status.png" alt="cpu" /> -->
+							</div>
+						</div>						
+					</div>
+					<div class="col-lg-12">
+						<div class="bdr p-3">
+							<div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+							  <div>
+								  <h5 class="text-muted">Memory Usage (Mi)</h5>
+							  </div>
+						  	</div>
+							<div>
+								<div id="loadingMemory" style="display: block;">
+									<p> Fetching data for Memory.... </p>
+								</div>
+								<div id="noDataMemoryMsg" style="display: none;">
+									<p> No data for this namespace. </p>
+								</div>
+								<div id="memory" style="display: none;">
+									<div class="partition">
+										<div class="memoryChart col-sm-6"></div>
+										<div class="data col-sm-6" id="memoryHeading">
+										</div>
+									</div>
+								</div>
+								<!-- <img class="img-fluid" src="images/memory-status.png" alt="memory" /> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="static" style="display: none;">					
+					<div class="col-lg-12">
+						<div class="bdr p-3">
+							<div class="container">
+								<div id="chart1">
+									<h2 id="noDataMsg"></h2>
+								</div>
+							  </div>
+						</div>						
+					</div>
+				</div>
+		  </div>
+		</div>
+	</div>
+	<script src="js/d3.v4.min.js"></script>
+	<script src="js/jquery-3.4.1.slim.min.js"></script> 
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/liveChartCpuScript.js"></script>
+	<script src="js/liveChartMemoryScript.js"></script>
+	<script src="js/historicalScript.js"></script>
+</body>
+</html>
